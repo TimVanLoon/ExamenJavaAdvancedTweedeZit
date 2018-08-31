@@ -61,18 +61,12 @@ public class UI implements InitializingBean {
         
 		btnSave = new JButton();
 	    btnSave.setText("List");
-	    btnSave.setPreferredSize(new Dimension(200, 20));
+	    btnSave.setPreferredSize(new Dimension(250, 80));
 	    btnSave.addActionListener(eventHandler::whenListButtonClicked);
 		
-	    JList newList = new JList();
-	    newList.setLayoutOrientation(JList.VERTICAL);
-    	newList.setVisibleRowCount(-1);
 	   
-	    JScrollPane listScroller = new JScrollPane(newList);
-	    listScroller.setPreferredSize(new Dimension(250, 80));
 	    
 	    listPanel.add(btnSave);
-	    listPanel.add(listScroller);
 	    
 	    searchPanel = new JPanel();
 	    searchPanel.setLayout(new GridLayout(5, 1));

@@ -33,7 +33,6 @@ public class TextReader {
 				while ((line = bufferedReader.readLine()) != null)
 				{
 					if(line.length() != 0) {
-						 System.out.println(line + " x");
 						 Quote quote = new Quote(line);
 						 repository.save(quote);
 					}

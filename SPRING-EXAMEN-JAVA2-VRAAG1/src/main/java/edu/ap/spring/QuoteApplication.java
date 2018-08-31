@@ -22,7 +22,6 @@ public class QuoteApplication {
 	@Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return (args) -> {
-			//textReader.saveQuotesToDb();
 			ui.setupUI();
 		};
     }
