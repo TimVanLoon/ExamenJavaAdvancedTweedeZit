@@ -7,6 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import edu.ap.spring.model.TextReader;
 import edu.ap.spring.view.UI;
 
 @SpringBootApplication
@@ -15,9 +16,14 @@ public class QuoteApplication {
 	@Autowired
 	UI ui;
 
+	@Autowired
+	TextReader textReader;
+	
 	@Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return (args) -> {
+			//textReader.saveQuotesToDb();
+			ui.setupUI();
 		};
     }
 	
