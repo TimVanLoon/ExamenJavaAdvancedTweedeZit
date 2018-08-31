@@ -10,6 +10,6 @@ public interface QuoteRepository extends CrudRepository<Quote, Long> {
 	
 	@Override
     List<Quote> findAll();
-	
+
 }
 

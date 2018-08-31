@@ -11,6 +11,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import org.springframework.beans.factory.InitializingBean;
@@ -24,11 +25,12 @@ public class UI implements InitializingBean {
 	EventHandler eventHandler;
 	
 	private JFrame jFrame;
-	private JPanel savePanel, listPanel; 
-	private JLabel saveLabel, saveSuccessLabel;
-	private JButton btnSave, btnList;
+	private JPanel savePanel, listPanel, searchPanel; 
+	private JLabel saveLabel, saveSuccessLabel, searchLabel;
+	private JButton btnSave, btnList, btnSearch;
 	private JTabbedPane tabbedPane;
 	private JList list;
+	private JTextField searchField;
 	
 	public UI() {}
 	
@@ -65,8 +67,24 @@ public class UI implements InitializingBean {
 	    listPanel.add(btnSave);
 	    savePanel.setPreferredSize(new Dimension(800, 50));
 	    
+	    searchPanel = new JPanel();
+	    searchPanel.setLayout(new GridLayout(10, 1));
+	    
+	    searchLabel = new JLabel("Search quotes: ");
+	    
+	    searchField = new JTextField(15);
+	    
+	    btnSearch = new JButton();
+	    btnSearch.setText("Search");
+	    btnSearch.addActionListener(eventHandler::whenSearchButtonClicked);
+	    
+	    searchPanel.add(searchLabel);
+	    searchPanel.add(searchField);
+	    searchPanel.add(btnSearch);
+	    
 	    tabbedPane.addTab("Save", savePanel);
 	    tabbedPane.addTab("List", listPanel);
+	    tabbedPane.addTab("Search", searchPanel);
 	    
 	    jFrame.add(tabbedPane);
 		jFrame.setSize(600, 600);
@@ -77,6 +95,38 @@ public class UI implements InitializingBean {
 		jFrame.setVisible(true);
 	}
 	
+	public JPanel getSearchPanel() {
+		return searchPanel;
+	}
+
+	public void setSearchPanel(JPanel searchPanel) {
+		this.searchPanel = searchPanel;
+	}
+
+	public JLabel getSearchLabel() {
+		return searchLabel;
+	}
+
+	public void setSearchLabel(JLabel searchLabel) {
+		this.searchLabel = searchLabel;
+	}
+
+	public JButton getBtnSearch() {
+		return btnSearch;
+	}
+
+	public void setBtnSearch(JButton btnSearch) {
+		this.btnSearch = btnSearch;
+	}
+
+	public JTextField getSearchField() {
+		return searchField;
+	}
+
+	public void setSearchField(JTextField searchField) {
+		this.searchField = searchField;
+	}
+
 	public void setSavePanel(JPanel savePanel) {
 		this.savePanel = savePanel;
 	}

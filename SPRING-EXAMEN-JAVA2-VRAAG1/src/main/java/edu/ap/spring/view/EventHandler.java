@@ -65,4 +65,30 @@ public class EventHandler {
     	ui.getListPanel().add(listScroller);
     }
     
+    public void whenSearchButtonClicked(ActionEvent actionEvent) {
+    	DefaultListModel listModel = new DefaultListModel();
+    	List<Quote> allQuotes = repository.findAll();
+    	String searchWord = ui.getSearchField().getText();
+    	
+    	if(searchWord != "") {
+    		for(Quote quote: allQuotes) {
+        		if(quote.getQuote().contains(searchWord)){
+        			listModel.addElement(quote.getQuote());
+        		}
+        	}
+    		
+    		JList newList = new JList(listModel);
+        	newList.setLayoutOrientation(JList.VERTICAL);
+        	newList.setVisibleRowCount(-1);
+    	   
+    	    JScrollPane listScroller = new JScrollPane(newList);
+    	    listScroller.setPreferredSize(new Dimension(250, 80));
+        	ui.getSearchPanel().add(listScroller);
+    		
+    	} else {
+    		
+    	}
+ 	
+    }
+    
 }
