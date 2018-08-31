@@ -62,7 +62,10 @@ public class EventHandler {
 	   
 	    JScrollPane listScroller = new JScrollPane(newList);
 	    listScroller.setPreferredSize(new Dimension(250, 80));
+	    
     	ui.getListPanel().add(listScroller);
+    	ui.getListPanel().revalidate();
+    	ui.getListPanel().repaint();
     }
     
     public void whenSearchButtonClicked(ActionEvent actionEvent) {
@@ -83,7 +86,11 @@ public class EventHandler {
     	   
     	    JScrollPane listScroller = new JScrollPane(newList);
     	    listScroller.setPreferredSize(new Dimension(250, 80));
+  
         	ui.getSearchPanel().add(listScroller);
+        	ui.getSearchPanel().revalidate();
+        	ui.getSearchPanel().repaint();
+        	
     		
     	} else {
     		

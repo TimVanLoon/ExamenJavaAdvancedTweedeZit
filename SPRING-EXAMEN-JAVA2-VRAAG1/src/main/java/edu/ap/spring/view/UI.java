@@ -41,7 +41,7 @@ public class UI implements InitializingBean {
 		tabbedPane = new JTabbedPane();
 		
 		savePanel = new JPanel();
-		savePanel.setLayout(new GridLayout(0, 2));
+		savePanel.setLayout(new GridLayout(10, 2));
 	    
 	    saveLabel = new JLabel("Save quotes to database: ");
 	    
@@ -54,21 +54,28 @@ public class UI implements InitializingBean {
 	    savePanel.add(saveLabel);
 	    savePanel.add(btnSave);
 	    savePanel.add(saveSuccessLabel);
-	    savePanel.setPreferredSize(new Dimension(800, 50));
+	    savePanel.setPreferredSize(new Dimension(150, 40));
 		
 		listPanel = new JPanel();
-		listPanel.setLayout(new GridLayout(10, 1));
+		listPanel.setLayout(new GridLayout(5, 1));
         
 		btnSave = new JButton();
 	    btnSave.setText("List");
 	    btnSave.setPreferredSize(new Dimension(200, 20));
 	    btnSave.addActionListener(eventHandler::whenListButtonClicked);
 		
+	    JList newList = new JList();
+	    newList.setLayoutOrientation(JList.VERTICAL);
+    	newList.setVisibleRowCount(-1);
+	   
+	    JScrollPane listScroller = new JScrollPane(newList);
+	    listScroller.setPreferredSize(new Dimension(250, 80));
+	    
 	    listPanel.add(btnSave);
-	    savePanel.setPreferredSize(new Dimension(800, 50));
+	    listPanel.add(listScroller);
 	    
 	    searchPanel = new JPanel();
-	    searchPanel.setLayout(new GridLayout(10, 1));
+	    searchPanel.setLayout(new GridLayout(5, 1));
 	    
 	    searchLabel = new JLabel("Search quotes: ");
 	    
@@ -87,8 +94,7 @@ public class UI implements InitializingBean {
 	    tabbedPane.addTab("Search", searchPanel);
 	    
 	    jFrame.add(tabbedPane);
-		jFrame.setSize(600, 600);
-		jFrame.getContentPane().setSize(800,400);
+	    jFrame.setSize(300, 50);
 		jFrame.setLocationRelativeTo(null);
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.pack();
